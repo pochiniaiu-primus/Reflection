@@ -50,8 +50,8 @@ public class Main {
     //Метод принимает Class и выводит всех предков класса и все интерфейсы
     // которое класс имплементирует
     static void printParentClassesAndInterfaces(Class clazz) {
-        clazz = Class.class.getSuperclass();
-        System.out.println(clazz);
+        Class superClass = clazz.getSuperclass();
+        System.out.println(superClass);
         Class[] theInterfaces = clazz.getInterfaces();
         for (int i = 0; i < theInterfaces.length; i++) {
             String interfaceName = theInterfaces[i].getName();
