@@ -1,6 +1,8 @@
 package com.serhiihonchar;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable, Cloneable {
     public int id;
     public String name;
     public String department;

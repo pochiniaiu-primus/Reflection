@@ -1,6 +1,5 @@
 package com.serhiihonchar;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.Arrays;
 
@@ -48,8 +47,16 @@ public class Main {
         }
     }
 
+    //Метод принимает Class и выводит всех предков класса и все интерфейсы
+    // которое класс имплементирует
     static void printParentClassesAndInterfaces(Class clazz) {
-
+        clazz = Class.class.getSuperclass();
+        System.out.println(clazz);
+        Class[] theInterfaces = clazz.getInterfaces();
+        for (int i = 0; i < theInterfaces.length; i++) {
+            String interfaceName = theInterfaces[i].getName();
+            System.out.println(interfaceName);
+        }
     }
 
     //Метод принимает объект и меняет всего его приватные поля на их нулевые значение (null, 0, false etc)+
@@ -81,11 +88,11 @@ public class Main {
         Class c1 = Employee.class;
         printNotPublicMethods(c1);
         System.out.println("==================================================================================");
-//        Class c2 = Employee.class;
-//        printMethodsWithFinal(c2);
-//        System.out.println("=======================================");
+        Employee emp1 = new Employee();
+        Class employeeClass = emp1.getClass();
+        printParentClassesAndInterfaces(employeeClass);
+        System.out.println("==================================================================================");
         Employee emp = new Employee();
         changeValues(emp);
     }
-
 }
