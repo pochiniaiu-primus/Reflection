@@ -1,5 +1,6 @@
 package com.serhiihonchar;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.Arrays;
 
@@ -25,15 +26,15 @@ public class Main {
     }
 
     //Метод принимает object и выводит на экран все сигнатуры методов в который есть final
-    static void printMethodsWithFinal(Object obj) {//need refactor
+    static void printMethodsWithFinal(Object obj) {//need to refactor
         obj = Object.class;
-        int mods = ((Class) obj).getModifiers();
         Method[] someMethod3 = ((Class) obj).getDeclaredMethods();
         for (Method method : someMethod3) {
-            if (Modifier.isFinal(mods))
+            if (Modifier.isFinal(method.getModifiers()))//Modifier.isFinal(mods)
                 System.out.println(method);
         }
     }
+
 
     //Метод принимает Class и выводит все не публичные методы этого класса
     static void printNotPublicMethods(Class clazz) {
@@ -79,11 +80,11 @@ public class Main {
         System.out.println("==================================================================================");
         Class c1 = Employee.class;
         printNotPublicMethods(c1);
-//        System.out.println("==================================================================================");
+        System.out.println("==================================================================================");
 //        Class c2 = Employee.class;
-//        method5(c2);
-        System.out.println("=======================================");
-        Employee emp= new Employee();
+//        printMethodsWithFinal(c2);
+//        System.out.println("=======================================");
+        Employee emp = new Employee();
         changeValues(emp);
     }
 
